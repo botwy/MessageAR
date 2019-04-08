@@ -29,32 +29,25 @@
             </objects>
             <point key="canvasLocation" x="-2270" y="131"/>
         </scene>
-        <!--Root Chat List Root View Controller-->
+        <!--ChatListView-->
         <scene sceneID="dgf-3E-L6x">
             <objects>
-                <viewController id="JUn-fy-Gbe" customClass="RootChatListRootViewController" customModule="MessageAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JUn-fy-Gbe" userLabel="ChatListView" customClass="RootChatListRootViewController" customModule="MessageAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nki-K5-06b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uMd-xW-9tK">
-                                <rect key="frame" x="33" y="147" width="361" height="648"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uMd-xW-9tK">
+                                <rect key="frame" x="33" y="103" width="361" height="692"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Список чатов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liF-m3-ifN">
-                                <rect key="frame" x="139" y="105" width="148" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.2480630247" green="0.31704189690000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aVt-Pb-dup"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="f7O-lX-It1"/>
+                    <navigationItem key="navigationItem" title="Список чатов" id="f7O-lX-It1"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chatListTable" destination="uMd-xW-9tK" id="l8G-ox-tlM"/>
@@ -65,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="-1123.1884057971015" y="128.57142857142856"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--ChatView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ChatViewController" customModule="MessageAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="ChatView" customClass="ChatViewController" customModule="MessageAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,9 +90,11 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="YyC-8c-WiQ"/>
                     <connections>
                         <outlet property="messageTextField" destination="Gkk-1G-x24" id="Oks-FZ-p0p"/>
                         <outlet property="messagesTable" destination="zQ1-fk-fzF" id="Nl0-ZI-JHH"/>
+                        <outlet property="navigationBar" destination="YyC-8c-WiQ" id="cSW-Ay-k0h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

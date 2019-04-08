@@ -10,9 +10,11 @@ import UIKit
 
 class RootChatListTableViewCell: UITableViewCell {
   @IBOutlet weak var chatTitle: UILabel!
+  @IBOutlet weak var message: UILabel!
   
   func setCellValue(chat: ChatProtocol) {
     chatTitle.text = chat.title
+    message.text = chat.messages.last?.text ?? ""
   }
     
 }

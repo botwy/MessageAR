@@ -11,6 +11,7 @@ import UIKit
 class ChatViewController: UIViewController {
   @IBOutlet weak var messageTextField: UITextField!
   @IBOutlet weak var messagesTable: UITableView!
+  @IBOutlet weak var navigationBar: UINavigationItem!
   
   var chatInStorage: ChatProtocol?
   var currentUser: UserProtocol?
@@ -33,6 +34,7 @@ class ChatViewController: UIViewController {
       )
       messagesTable.delegate = self
       messagesTable.dataSource = self
+      navigationBar.title = currentUser?.name
   }
   
   @IBAction func onClickSendButton(_ sender: UIButton) {

@@ -26,6 +26,7 @@ class RootChatListRootViewController: UIViewController {
     )
     chatListTable.delegate = self
     chatListTable.dataSource = self
+    chatListTable.tableFooterView = UIView.init()
   }
 }
 
@@ -61,5 +62,10 @@ extension RootChatListRootViewController: UITableViewDataSource, UITableViewDele
       destination.chatInStorage = chat
     }
     
+  }
+  
+  //MARK: - UITableViewDelegate
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 60.0
   }
 }

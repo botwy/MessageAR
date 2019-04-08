@@ -50,6 +50,6 @@ func createChatList() -> [ChatProtocol] {
   return [
     Chat(id: "1", title: "Dasha", author: User(id: "2", name: "Dasha"), messages: createDashaMessages()),
     Chat(id: "2", title: "Vika", author: User(id: "4", name: "Vika"), messages: createVikaMessages()),
-    Chat(id: "4", title: "Dan Abramov", author: User(id: "5", name: "Dan"), messages: createDanMessages()),
+    Chat(id: "4", title: "Dan Abramov", author: User(id: "5", name: "Dan Abramov"), messages: createDanMessages()),
   ]
 }
