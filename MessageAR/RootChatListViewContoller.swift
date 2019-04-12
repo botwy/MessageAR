@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class RootChatListRootViewController: UIViewController {
+class RootChatListViewController: UIViewController {
   @IBOutlet weak var chatListTable: UITableView!
-  var chatStorage: ChatStorageProtocol = ChatStorage(chatList: createChatList())
+  var modelController: ChatModelController? = ChatModelController(chatList: createChatList())
   
   let cellIdentifier = String(describing: RootChatListTableViewCell.self)
   
@@ -26,13 +26,16 @@ class RootChatListRootViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    chatList = chatStorage.chatList
     chatListTable.register(
       UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier
     )
     chatListTable.delegate = self
     chatListTable.dataSource = self
     chatListTable.tableFooterView = UIView.init()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    chatListTable.reloadData()
   }
   
   func getChatList() {
@@ -50,17 +53,17 @@ class RootChatListRootViewController: UIViewController {
   }
 }
 
-extension RootChatListRootViewController: UITableViewDataSource, UITableViewDelegate {
+extension RootChatListViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.chatList.count
+    return modelController?.chatList?.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let chatCell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! RootChatListTableViewCell
     
-      let chat = chatList[indexPath.row]
-      chatCell.setCellValue(chat: chat)
-  
+    if let chat = modelController?.chatList?[indexPath.row] {
+       chatCell.setCellValue(chat: chat)
+    }
     
     return chatCell
   }
@@ -75,13 +78,11 @@ extension RootChatListRootViewController: UITableViewDataSource, UITableViewDele
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let destination = segue.destination as? ChatViewController, let indexPath = sender as? IndexPath {
-      let chat = chatList[indexPath.row]
-      destination.currentUser = chat.author
-      destination.messages = chat.messages
-      destination.chatInStorage = chat
+    if let destination = segue.destination as? ChatViewController,
+      let indexPath = sender as? IndexPath {
+     destination.modelController = modelController
+     destination.chatId = modelController?.chatList?[indexPath.row].id ?? ""
     }
-    
   }
   
   //MARK: - UITableViewDelegate

@@ -13,15 +13,8 @@ class ChatViewController: UIViewController {
   @IBOutlet weak var messagesTable: UITableView!
   @IBOutlet weak var navigationBar: UINavigationItem!
   
-  var chatInStorage: ChatProtocol?
-  var currentUser: User?
-  var messages: [Message]? {
-    didSet {
-      if let messageList = messages {
-        chatInStorage?.messages = messageList
-      }
-    }
-  }
+  var modelController: ChatModelController?
+  var chatId: String = ""
   
   let cellIdentifier = String(describing: ChatTableViewCell.self)
   
@@ -34,18 +27,23 @@ class ChatViewController: UIViewController {
       )
       messagesTable.delegate = self
       messagesTable.dataSource = self
-      navigationBar.title = currentUser?.name
+      navigationBar.title =  modelController?.getAuthorBy(chatId: chatId)?.name
   }
   
   @IBAction func onClickSendButton(_ sender: UIButton) {
-    guard let messageText = messageTextField.text, let author = currentUser else {
+    let chat = modelController?.chatList?
+      .first{ $0.id == chatId }
+    guard
+      let messageText = messageTextField.text,
+      let author = modelController?.getAuthorBy(chatId: chatId),
+      var selectedChat = chat else {
       return
     }
     if (messageText.count == 0) {
       return
     }
+   selectedChat.messages.append(Message(id: "", text: messageText, author: author))
     
-    messages?.append(Message(id: "", text: messageText, author: author))
     messageTextField.text = ""
     messagesTable.reloadData()
   }
@@ -54,14 +52,14 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.messages?.count ?? 0
+    return modelController?.getMessagesBy(chatId: chatId).count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
   let messageRow = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! ChatTableViewCell
     
-    if let message = messages?[indexPath.row] {
-      let isOwn = message.author.id == self.currentUser?.id
+    if let message = modelController?.getMessagesBy(chatId: chatId)[indexPath.row] {
+      let isOwn = message.author.id == modelController?.getAuthorBy(chatId: chatId)?.id
       messageRow.setChatRowValue(message: message, isOwn: isOwn)
     }
     
