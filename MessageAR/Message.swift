@@ -11,11 +11,11 @@ import Foundation
 protocol MessageProtocol {
   var id: String { get }
   var text: String { get set }
-  var author: UserProtocol { get set }
+  var author: User { get set }
 }
 
-struct Message: MessageProtocol {
+struct Message: MessageProtocol, Decodable {
   var id: String
   var text: String
-  var author: UserProtocol
+  var author: User
 }

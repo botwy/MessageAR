@@ -15,7 +15,13 @@ class RootChatListRootViewController: UIViewController {
   
   let cellIdentifier = String(describing: RootChatListTableViewCell.self)
   
-  var chatList: [ChatProtocol] = []
+  var chatList: [ChatProtocol] = [] {
+    didSet {
+      DispatchQueue.main.async {
+        self.chatListTable.reloadData()
+      }
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,6 +33,20 @@ class RootChatListRootViewController: UIViewController {
     chatListTable.delegate = self
     chatListTable.dataSource = self
     chatListTable.tableFooterView = UIView.init()
+  }
+  
+  func getChatList() {
+    let http = HttpFetch()
+    http.createGetRequest { [unowned self](data, response, error) in
+      guard let data = data, error == nil else { return }
+      do {
+        let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
+        guard let chatList = chatResponseJson.body else { return }
+        self.chatList = chatList
+      } catch let error {
+        print(error)
+      }
+    }
   }
 }
 

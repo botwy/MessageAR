@@ -14,8 +14,8 @@ class ChatViewController: UIViewController {
   @IBOutlet weak var navigationBar: UINavigationItem!
   
   var chatInStorage: ChatProtocol?
-  var currentUser: UserProtocol?
-  var messages: [MessageProtocol]? {
+  var currentUser: User?
+  var messages: [Message]? {
     didSet {
       if let messageList = messages {
         chatInStorage?.messages = messageList

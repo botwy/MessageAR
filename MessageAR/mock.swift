@@ -12,7 +12,7 @@ func createCurrentUser() -> User {
   return User(id: "1", name: "Dima")
 }
 
-func createMessages() -> [MessageProtocol] {
+func createMessages() -> [Message] {
   return [
     Message(id: "1", text: "hello, Dasha", author: User(id: "1", name: "Dima")),
     Message(id: "2", text: "hello, Dima", author: User(id: "2", name: "Dasha")),
@@ -21,7 +21,7 @@ func createMessages() -> [MessageProtocol] {
 }
 
 
-func createDashaMessages() -> [MessageProtocol] {
+func createDashaMessages() -> [Message] {
   return [
     Message(id: "1", text: "hello, Dasha", author: User(id: "1", name: "Dima")),
     Message(id: "2", text: "hello, Dima", author: User(id: "2", name: "Dasha")),
@@ -30,7 +30,7 @@ func createDashaMessages() -> [MessageProtocol] {
 }
 
 
-func createVikaMessages() -> [MessageProtocol] {
+func createVikaMessages() -> [Message] {
   return [
     Message(id: "4", text: "hello, Dasha", author: User(id: "4", name: "Vika")),
     Message(id: "5", text: "hello, Vika", author: User(id: "2", name: "Dasha")),
@@ -38,7 +38,7 @@ func createVikaMessages() -> [MessageProtocol] {
   ]
 }
 
-func createDanMessages() -> [MessageProtocol] {
+func createDanMessages() -> [Message] {
   return [
     Message(id: "7", text: "hello, Dasha", author: User(id: "5", name: "Dan")),
     Message(id: "8", text: "hello, Dan", author: User(id: "1", name: "Dima")),
