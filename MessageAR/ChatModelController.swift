@@ -50,4 +50,8 @@ class ChatModelController {
      var chat = chatList?.first{ $0.id == id }
      chat?.messages.append(message)
   }
+  
+  func update(chatList: [ChatProtocol]) {
+    self.chatList = chatList
+  }
 }

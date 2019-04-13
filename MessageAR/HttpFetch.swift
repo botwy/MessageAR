@@ -9,16 +9,39 @@
 import Foundation
 
 class HttpFetch:  NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
-  let urlString = "http://localhost:5656/chat"
+  private let host = "http://localhost:5656"
+  private var serviceUrl = "/chat"
   var responseHandler: ((Data?, URLResponse?, Error?) -> Void)?
   
+  func getUrl() -> String {
+    return host + serviceUrl
+  }
+  
+  func setMessageService() {
+    serviceUrl = "/chat/message"
+  }
   
   func createGetRequest(responseHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
     self.responseHandler = responseHandler
-    guard let url = URL(string: urlString) else { return }
+    guard let url = URL(string: getUrl()) else { return }
     let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
     
     let sessionDataTask = session.dataTask(with: url, completionHandler: responseHandler)
+    sessionDataTask.resume()
+  }
+  
+  func createPostRequest<T:Encodable>(requestPayload: T, responseHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
+    self.responseHandler = responseHandler
+    guard let url = URL(string: getUrl()) else { return }
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+    guard let httpBody = try? JSONEncoder().encode(requestPayload) else {
+      return
+    }
+    request.httpBody = httpBody
+    let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+    let sessionDataTask = session.dataTask(with: request, completionHandler: responseHandler)
     sessionDataTask.resume()
   }
   

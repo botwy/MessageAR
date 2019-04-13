@@ -40,8 +40,24 @@ class ChatViewController: UIViewController {
       return
     }
     let message = Message(id: "", text: messageText, author: author, createDate: Message.getServerCurrentDate())
-    modelController?.add(message: message, toChatWithId: chatId)
-    
+    let requestPayload = ChatMessageRequestJson(chatId: chatId, message: message)
+    let http = HttpFetch()
+    http.setMessageService()
+    http.createPostRequest(requestPayload: requestPayload) { [unowned self](data, url, error) in
+      guard let data = data, error == nil else { return }
+      do {
+        let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
+        guard let chatList = chatResponseJson.body else {
+          return
+        }
+        DispatchQueue.main.async {
+          self.modelController?.update(chatList: chatList)
+          self.messagesTable.reloadData()
+        }
+      } catch let error {
+        print(error)
+      }
+    }
     messageTextField.text = ""
     messagesTable.reloadData()
   }

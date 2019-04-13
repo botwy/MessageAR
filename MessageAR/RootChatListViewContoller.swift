@@ -11,17 +11,9 @@ import UIKit
 
 class RootChatListViewController: UIViewController {
   @IBOutlet weak var chatListTable: UITableView!
-  var modelController: ChatModelController? = ChatModelController(chatList: createChatList())
+  var modelController: ChatModelController?
   
   let cellIdentifier = String(describing: RootChatListTableViewCell.self)
-  
-  var chatList: [ChatProtocol] = [] {
-    didSet {
-      DispatchQueue.main.async {
-        self.chatListTable.reloadData()
-      }
-    }
-  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,6 +24,7 @@ class RootChatListViewController: UIViewController {
     chatListTable.delegate = self
     chatListTable.dataSource = self
     chatListTable.tableFooterView = UIView.init()
+    getChatList()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -44,8 +37,13 @@ class RootChatListViewController: UIViewController {
       guard let data = data, error == nil else { return }
       do {
         let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
-        guard let chatList = chatResponseJson.body else { return }
-        self.chatList = chatList
+        guard let chatList = chatResponseJson.body else {
+          return
+        }
+        DispatchQueue.main.async {
+          self.modelController = ChatModelController(chatList: chatList)
+          self.chatListTable.reloadData()
+        }
       } catch let error {
         print(error)
       }

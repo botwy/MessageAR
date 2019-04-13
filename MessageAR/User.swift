@@ -12,7 +12,7 @@ protocol UserProtocol: PersonProtocol {
   var profileIconPath: String? { get set }
 }
 
-struct User: UserProtocol, Decodable {
+struct User: UserProtocol, Codable {
   var id: String
   var name: String
   var profileIconPath: String? = nil

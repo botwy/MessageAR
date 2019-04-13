@@ -15,7 +15,7 @@ protocol MessageProtocol {
   var createDate: String { get set }
 }
 
-struct Message: MessageProtocol, Decodable {
+struct Message: MessageProtocol, Codable {
   var id: String
   var text: String
   var author: User

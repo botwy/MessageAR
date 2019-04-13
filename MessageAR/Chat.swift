@@ -33,3 +33,8 @@ struct ChatListResponseJson: Decodable {
   var success: Bool?
   var body: [Chat]?
 }
+
+struct ChatMessageRequestJson: Encodable {
+  var chatId: String
+  var message: Message
+}
