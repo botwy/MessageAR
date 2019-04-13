@@ -9,7 +9,7 @@
 import Foundation
 
 class HttpFetch:  NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
-  let urlString = "http://localhost:5656/km-kb-app/rs/clients"
+  let urlString = "http://localhost:5656/chat"
   var responseHandler: ((Data?, URLResponse?, Error?) -> Void)?
   
   
