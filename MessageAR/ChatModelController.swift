@@ -37,4 +37,17 @@ class ChatModelController {
   func getMessagesBy(chatId: String) -> [Message] {
     return getChatBy(id: chatId)?.messages ?? []
   }
+  
+  func getLastMessage(inChatWithId chatId: String) -> Message? {
+    return getMessagesBy(chatId: chatId).last
+  }
+  
+  func getMessage(byId messageId: String, inChatWithId chatId: String) -> Message? {
+    return getMessagesBy(chatId: chatId).first{ $0.id == messageId }
+  }
+  
+  func add(message: Message, toChatWithId id: String) {
+     var chat = chatList?.first{ $0.id == id }
+     chat?.messages.append(message)
+  }
 }

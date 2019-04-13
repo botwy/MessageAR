@@ -31,18 +31,16 @@ class ChatViewController: UIViewController {
   }
   
   @IBAction func onClickSendButton(_ sender: UIButton) {
-    let chat = modelController?.chatList?
-      .first{ $0.id == chatId }
     guard
       let messageText = messageTextField.text,
-      let author = modelController?.getAuthorBy(chatId: chatId),
-      var selectedChat = chat else {
+      let author = modelController?.getAuthorBy(chatId: chatId) else {
       return
     }
     if (messageText.count == 0) {
       return
     }
-   selectedChat.messages.append(Message(id: "", text: messageText, author: author))
+    let message = Message(id: "", text: messageText, author: author, createDate: Message.getServerCurrentDate())
+    modelController?.add(message: message, toChatWithId: chatId)
     
     messageTextField.text = ""
     messagesTable.reloadData()

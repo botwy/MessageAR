@@ -8,48 +8,35 @@
 
 import Foundation
 
-func createCurrentUser() -> User {
-  return User(id: "1", name: "Dima")
-}
-
-func createMessages() -> [Message] {
+func createMessagesForFirstChat() -> [Message] {
   return [
-    Message(id: "1", text: "hello, Dasha", author: User(id: "1", name: "Dima")),
-    Message(id: "2", text: "hello, Dima", author: User(id: "2", name: "Dasha")),
-    Message(id: "3", text: "how are you?", author: User(id: "1", name: "Dima")),
+    Message(id: "1", text: "hello, Helen", author: User(id: "1", name: "Dima"), createDate: "2019-04-01 11:15"),
+    Message(id: "2", text: "hello, Dima", author: User(id: "2", name: "Helen"), createDate: "2019-04-13 17:15"),
+    Message(id: "3", text: "how are you?", author: User(id: "1", name: "Dima"), createDate: "2019-04-12 11:15"),
   ]
 }
 
 
-func createDashaMessages() -> [Message] {
+func createMessagesForSecondChat() -> [Message] {
   return [
-    Message(id: "1", text: "hello, Helen", author: User(id: "1", name: "Dima")),
-    Message(id: "2", text: "hello, Dima", author: User(id: "2", name: "Dasha")),
-    Message(id: "3", text: "how are you?", author: User(id: "1", name: "Dima")),
+    Message(id: "4", text: "hello, Helen", author: User(id: "4", name: "Vika"), createDate: "2019-04-01 11:15"),
+    Message(id: "5", text: "hello, Vika", author: User(id: "2", name: "Dasha"), createDate: "2019-04-05 11:35"),
+    Message(id: "6", text: "how are you?", author: User(id: "2", name: "Dasha"), createDate: "2019-04-12 12:11"),
   ]
 }
 
-
-func createVikaMessages() -> [Message] {
+func createMessagesForThirdChat() -> [Message] {
   return [
-    Message(id: "4", text: "hello, Helen", author: User(id: "4", name: "Vika")),
-    Message(id: "5", text: "hello, Vika", author: User(id: "2", name: "Dasha")),
-    Message(id: "6", text: "how are you?", author: User(id: "2", name: "Dasha")),
-  ]
-}
-
-func createDanMessages() -> [Message] {
-  return [
-    Message(id: "7", text: "hello, Helen", author: User(id: "5", name: "Dan")),
-    Message(id: "8", text: "hello, Dan", author: User(id: "1", name: "Dima")),
-    Message(id: "9", text: "how are you?", author: User(id: "1", name: "Dima")),
+    Message(id: "7", text: "hello, Helen", author: User(id: "5", name: "Dan"), createDate: "2019-04-03 09:11"),
+    Message(id: "8", text: "hello, Dan", author: User(id: "1", name: "Dima"), createDate: "2019-04-07 13:22"),
+    Message(id: "9", text: "how are you?", author: User(id: "1", name: "Dima"), createDate: "2019-04-13 16:45"),
   ]
 }
 
 func createChatList() -> [ChatProtocol] {
   return [
-    Chat(id: "1", title: "Helen", author: User(id: "2", name: "Helen", profileIconPath: "princess.png"), messages: createDashaMessages()),
-    Chat(id: "2", title: "Vika", author: User(id: "4", name: "Vika"), messages: createVikaMessages()),
-    Chat(id: "4", title: "Dan Abramov", author: User(id: "5", name: "Dan Abramov", profileIconPath: "robot.png"), messages: createDanMessages()),
+    Chat(id: "1", title: "Helen", author: User(id: "2", name: "Helen", profileIconPath: "princess.png"), messages: createMessagesForFirstChat()),
+    Chat(id: "2", title: "Vika", author: User(id: "4", name: "Vika"), messages: createMessagesForSecondChat()),
+    Chat(id: "3", title: "Dan Abramov", author: User(id: "5", name: "Dan Abramov", profileIconPath: "robot.png"), messages: createMessagesForThirdChat()),
   ]
 }

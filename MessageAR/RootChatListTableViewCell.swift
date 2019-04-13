@@ -15,20 +15,16 @@ class RootChatListTableViewCell: UITableViewCell {
   @IBOutlet weak var lastUpdate: UILabel!
   
   func setCellValue(chat: ChatProtocol) {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "HH:mm"
-    let date = dateFormatter.date(from: "12:35")
-    if let date = date {
-      lastUpdate.text = dateFormatter.string(from: date)
-    }
-    
     chatTitle.text = chat.title
-    message.text = chat.messages.last?.text ?? ""
     if let profileIconPath = chat.author.profileIconPath,
-      let image = UIImage(named: profileIconPath)
-      {
+      let image = UIImage(named: profileIconPath) {
       profileIcon.image = image
     }
+    guard let lastMessage = chat.messages.last else {
+      return
+    }
+    message.text = lastMessage.text
+    lastUpdate.text = Message.getUiCreateDate(inMessage: lastMessage)
   }
     
 }
