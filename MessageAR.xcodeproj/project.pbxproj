@@ -20,8 +20,6 @@
 		847A190022591EF50015C4B7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A18FE22591EF50015C4B7 /* ChatTableViewCell.swift */; };
 		847A190122591EF50015C4B7 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */; };
 		847A1903225943CD0015C4B7 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A1902225943CD0015C4B7 /* UILabelExtension.swift */; };
-		84BE3A2B225D2D8000D1C941 /* robot.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BE3A2A225D2D8000D1C941 /* robot.png */; };
-		84BE3A2D225D2EDA00D1C941 /* princess.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BE3A2C225D2ED900D1C941 /* princess.png */; };
 		84BE3A2F225D2F2400D1C941 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BE3A2E225D2F2400D1C941 /* default.png */; };
 		84F2EA9022611FD7008FAE7C /* ChatModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2EA8F22611FD7008FAE7C /* ChatModelController.swift */; };
 		84F3D6B42259D7E4006B847D /* RootChatListViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3D6B32259D7E4006B847D /* RootChatListViewContoller.swift */; };
@@ -47,8 +45,6 @@
 		847A18FE22591EF50015C4B7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		847A1902225943CD0015C4B7 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
-		84BE3A2A225D2D8000D1C941 /* robot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = robot.png; sourceTree = "<group>"; };
-		84BE3A2C225D2ED900D1C941 /* princess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = princess.png; sourceTree = "<group>"; };
 		84BE3A2E225D2F2400D1C941 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		84F2EA8F22611FD7008FAE7C /* ChatModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModelController.swift; sourceTree = "<group>"; };
 		84F3D6B32259D7E4006B847D /* RootChatListViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootChatListViewContoller.swift; sourceTree = "<group>"; };
@@ -89,8 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				84BE3A2E225D2F2400D1C941 /* default.png */,
-				84BE3A2C225D2ED900D1C941 /* princess.png */,
-				84BE3A2A225D2D8000D1C941 /* robot.png */,
 				840C42F12258DAB6003C334C /* AppDelegate.swift */,
 				840C42F32258DAB6003C334C /* ChatViewController.swift */,
 				840C42F52258DAB7003C334C /* Main.storyboard */,
@@ -173,8 +167,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84BE3A2D225D2EDA00D1C941 /* princess.png in Resources */,
-				84BE3A2B225D2D8000D1C941 /* robot.png in Resources */,
 				840C42FC2258DABB003C334C /* LaunchScreen.storyboard in Resources */,
 				84BE3A2F225D2F2400D1C941 /* default.png in Resources */,
 				84F3D6B82259D90D006B847D /* RootChatListTableViewCell.xib in Resources */,

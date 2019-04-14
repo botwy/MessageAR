@@ -13,6 +13,10 @@ class HttpFetch:  NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
   private var serviceUrl = "/chat"
   var responseHandler: ((Data?, URLResponse?, Error?) -> Void)?
   
+  func getHost() -> String {
+    return host
+  }
+  
   func getUrl() -> String {
     return host + serviceUrl
   }
