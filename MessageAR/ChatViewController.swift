@@ -27,6 +27,8 @@ class ChatViewController: UIViewController {
       )
       messagesTable.delegate = self
       messagesTable.dataSource = self
+      messagesTable.estimatedRowHeight = 44
+      messagesTable.rowHeight = UITableView.automaticDimension
       navigationBar.title =  modelController?.getAuthorBy(chatId: chatId)?.name
   }
   
