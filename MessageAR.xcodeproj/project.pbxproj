@@ -15,6 +15,7 @@
 		840C43042258DD9C003C334C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C43032258DD9C003C334C /* Message.swift */; };
 		840C43062258DE90003C334C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C43052258DE90003C334C /* Person.swift */; };
 		840C43082258E08E003C334C /* mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C43072258E08E003C334C /* mock.swift */; };
+		844DD795226376C300F4E896 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DD794226376C300F4E896 /* AuthViewController.swift */; };
 		847A18F7225916980015C4B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A18F6225916980015C4B7 /* User.swift */; };
 		847A190022591EF50015C4B7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A18FE22591EF50015C4B7 /* ChatTableViewCell.swift */; };
 		847A190122591EF50015C4B7 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */; };
@@ -41,6 +42,7 @@
 		840C43032258DD9C003C334C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		840C43052258DE90003C334C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		840C43072258E08E003C334C /* mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mock.swift; sourceTree = "<group>"; };
+		844DD794226376C300F4E896 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		847A18F6225916980015C4B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		847A18FE22591EF50015C4B7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				84F3D6B92259D9FE006B847D /* Chat.swift */,
 				D7B315C22260A616007E9DF0 /* HttpFetch.swift */,
 				84F2EA8F22611FD7008FAE7C /* ChatModelController.swift */,
+				844DD794226376C300F4E896 /* AuthViewController.swift */,
 			);
 			path = MessageAR;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				84F3D6B42259D7E4006B847D /* RootChatListViewContoller.swift in Sources */,
 				84F3D6BA2259D9FE006B847D /* Chat.swift in Sources */,
 				847A1903225943CD0015C4B7 /* UILabelExtension.swift in Sources */,
+				844DD795226376C300F4E896 /* AuthViewController.swift in Sources */,
 				840C43082258E08E003C334C /* mock.swift in Sources */,
 				840C43062258DE90003C334C /* Person.swift in Sources */,
 				840C42F22258DAB6003C334C /* AppDelegate.swift in Sources */,

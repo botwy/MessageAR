@@ -21,6 +21,10 @@ class HttpFetch:  NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
     serviceUrl = "/chat/message"
   }
   
+  func setAuthService() {
+    serviceUrl = "/auth"
+  }
+  
   func createGetRequest(responseHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
     self.responseHandler = responseHandler
     guard let url = URL(string: getUrl()) else { return }

@@ -72,7 +72,7 @@ extension RootChatListViewController: UITableViewDataSource, UITableViewDelegate
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    performSegue(withIdentifier: "ChatViewController", sender: indexPath)
+    performSegue(withIdentifier: "RootChatListToChatSegue", sender: indexPath)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
