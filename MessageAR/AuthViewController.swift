@@ -21,11 +21,15 @@ class AuthViewController: UIViewController {
   @IBOutlet weak var authView: UIView!
   @IBOutlet weak var userName: UITextField!
   @IBOutlet weak var errorLabel: UILabel!
+  @IBOutlet weak var loginButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
       errorLabel.isHidden = true
       authView.layer.cornerRadius = 20
+      loginButton.layer.borderWidth = 1
+      loginButton.layer.borderColor = UIColor.blue.cgColor
+      loginButton.layer.cornerRadius = 10
   }
   
   @IBAction func changeUserName(_ sender: UITextField) {

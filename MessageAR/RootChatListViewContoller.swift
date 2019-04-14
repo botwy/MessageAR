@@ -18,6 +18,7 @@ class RootChatListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationItem.hidesBackButton = true
     chatListTable.register(
       UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier
     )

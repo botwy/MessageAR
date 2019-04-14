@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Ny-fj-VOt">
-                                        <rect key="frame" x="140" y="69" width="226" height="30"/>
+                                        <rect key="frame" x="140" y="69" width="206" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -32,15 +32,15 @@
                                             <action selector="changeUserName:" destination="oH1-pg-pmo" eventType="editingChanged" id="r0y-hN-za4"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACy-7A-YF3">
-                                        <rect key="frame" x="0.0" y="70" width="132" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACy-7A-YF3">
+                                        <rect key="frame" x="20" y="70" width="112" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tq4-ov-GD9">
-                                        <rect key="frame" x="0.0" y="122" width="374" height="53"/>
+                                        <rect key="frame" x="20" y="122" width="326" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="login"/>
@@ -59,13 +59,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="XgN-jp-8Va"/>
                     </view>
                     <navigationItem key="navigationItem" id="nux-pN-HFy"/>
                     <connections>
                         <outlet property="authView" destination="Kvo-uB-Xm5" id="nSE-gj-Q0w"/>
                         <outlet property="errorLabel" destination="2lf-tV-p4J" id="OtX-LA-sTG"/>
+                        <outlet property="loginButton" destination="tq4-ov-GD9" id="bYv-zI-F8H"/>
                         <outlet property="userName" destination="8Ny-fj-VOt" id="iqm-g4-sN8"/>
                         <segue destination="JUn-fy-Gbe" kind="show" identifier="AuthToRootChatListSegue" id="M6h-Yf-5Iu"/>
                     </connections>
