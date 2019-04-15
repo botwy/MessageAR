@@ -12,13 +12,22 @@ import UIKit
 class RootChatListViewController: UIViewController {
   @IBOutlet weak var chatListTable: UITableView!
   var modelController: ChatModelController?
+  var filteredChatList = [Chat]()
+  let searchController = UISearchController(searchResultsController: nil)
   
   let cellIdentifier = String(describing: RootChatListTableViewCell.self)
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    searchController.searchResultsUpdater = self
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.placeholder = "Search Chat"
+    
     navigationItem.hidesBackButton = true
+    navigationItem.hidesSearchBarWhenScrolling = false
+    navigationItem.searchController = searchController
+    
     chatListTable.register(
       UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier
     )
@@ -87,5 +96,12 @@ extension RootChatListViewController: UITableViewDataSource, UITableViewDelegate
   //MARK: - UITableViewDelegate
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 60.0
+  }
+}
+
+extension RootChatListViewController: UISearchResultsUpdating {
+  // MARK: - UISearchResultsUpdating Delegate
+  func updateSearchResults(for searchController: UISearchController) {
+    // TODO
   }
 }
