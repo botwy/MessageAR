@@ -11,6 +11,8 @@ import UIKit
 
 class RootChatListViewController: UIViewController {
   @IBOutlet weak var chatListTable: UITableView!
+  let spinner = UIActivityIndicatorView(style: .gray)
+  
   var modelController: ChatModelController?
   var filteredChatList = [Chat]()
   let searchController = UISearchController(searchResultsController: nil)
@@ -34,6 +36,7 @@ class RootChatListViewController: UIViewController {
     chatListTable.delegate = self
     chatListTable.dataSource = self
     chatListTable.tableFooterView = UIView.init()
+    chatListTable.backgroundView = spinner
     getChatList()
   }
   
@@ -43,6 +46,7 @@ class RootChatListViewController: UIViewController {
   
   func getChatList() {
     let http = HttpFetch()
+    spinner.startAnimating()
     http.createGetRequest { [unowned self](data, response, error) in
       guard let data = data, error == nil else { return }
       do {
@@ -53,6 +57,8 @@ class RootChatListViewController: UIViewController {
         DispatchQueue.main.async {
           self.modelController = ChatModelController(chatList: chatList)
           self.chatListTable.reloadData()
+          self.spinner.stopAnimating()
+          self.spinner.isHidden = true
         }
       } catch let error {
         print(error)
