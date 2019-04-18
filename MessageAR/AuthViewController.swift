@@ -20,6 +20,7 @@ struct AuthServerResponse: Decodable {
 class AuthViewController: UIViewController {
   @IBOutlet weak var authView: UIView!
   @IBOutlet weak var userName: UITextField!
+  @IBOutlet weak var password: UITextField!
   @IBOutlet weak var errorLabel: UILabel!
   @IBOutlet weak var loginButton: UIButton!
   

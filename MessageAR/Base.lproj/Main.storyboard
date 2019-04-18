@@ -39,8 +39,15 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhy-NF-fHg">
+                                        <rect key="frame" x="20" y="122" width="112" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tq4-ov-GD9">
-                                        <rect key="frame" x="20" y="122" width="326" height="53"/>
+                                        <rect key="frame" x="24" y="177" width="326" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="login"/>
@@ -49,12 +56,22 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="wrong login or password, try again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lf-tV-p4J">
-                                        <rect key="frame" x="8" y="183" width="366" height="72"/>
+                                        <rect key="frame" x="8" y="225" width="366" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="1" green="0.039453441528171207" blue="0.025044077760745576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-de-seo">
+                                        <rect key="frame" x="140" y="121" width="206" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="changeUserName:" destination="oH1-pg-pmo" eventType="editingChanged" id="96F-ez-lDE"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -67,6 +84,7 @@
                         <outlet property="authView" destination="Kvo-uB-Xm5" id="nSE-gj-Q0w"/>
                         <outlet property="errorLabel" destination="2lf-tV-p4J" id="OtX-LA-sTG"/>
                         <outlet property="loginButton" destination="tq4-ov-GD9" id="bYv-zI-F8H"/>
+                        <outlet property="password" destination="5hH-de-seo" id="4ZM-9C-pbl"/>
                         <outlet property="userName" destination="8Ny-fj-VOt" id="iqm-g4-sN8"/>
                         <segue destination="JUn-fy-Gbe" kind="show" identifier="AuthToRootChatListSegue" id="M6h-Yf-5Iu"/>
                     </connections>
