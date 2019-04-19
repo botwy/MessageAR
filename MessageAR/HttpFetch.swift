@@ -29,12 +29,21 @@ class HttpFetch:  NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
     serviceUrl = "/auth"
   }
   
-  func createGetRequest(responseHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
+  func createGetRequest(headers: [(field: String, value: String)]?, responseHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
     self.responseHandler = responseHandler
     guard let url = URL(string: getUrl()) else { return }
+    var request = URLRequest(url: url)
+    request.httpMethod = "GET"
+    request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+    if let headers = headers {
+      headers.forEach {
+        (header: (field: String, value: String)) in
+        request.setValue(header.value, forHTTPHeaderField: header.field)
+      }
+    }
     let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
     
-    let sessionDataTask = session.dataTask(with: url, completionHandler: responseHandler)
+    let sessionDataTask = session.dataTask(with: request, completionHandler: responseHandler)
     sessionDataTask.resume()
   }
   

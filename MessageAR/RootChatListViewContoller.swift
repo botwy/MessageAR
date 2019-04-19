@@ -14,7 +14,7 @@ class RootChatListViewController: UIViewController {
   let spinner = UIActivityIndicatorView(style: .gray)
   
   var modelController: ChatModelController?
-  var filteredChatList = [Chat]()
+  var filteredChatList = [ChatProtocol]()
   let searchController = UISearchController(searchResultsController: nil)
   
   let cellIdentifier = String(describing: RootChatListTableViewCell.self)
@@ -37,17 +37,18 @@ class RootChatListViewController: UIViewController {
     chatListTable.dataSource = self
     chatListTable.tableFooterView = UIView.init()
     chatListTable.backgroundView = spinner
-    getChatList()
+    fetchChatList()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     chatListTable.reloadData()
   }
   
-  func getChatList() {
+  func fetchChatList() {
     let http = HttpFetch()
     spinner.startAnimating()
-    http.createGetRequest { [unowned self](data, response, error) in
+    http.createGetRequest(headers: nil){
+      [unowned self](data, response, error) in
       guard let data = data, error == nil else { return }
       do {
         let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
@@ -65,17 +66,46 @@ class RootChatListViewController: UIViewController {
       }
     }
   }
+  
+  func isSearchBarEmpty() -> Bool {
+    return searchController.searchBar.text?.isEmpty ?? true
+  }
+  
+  func isFiltered() -> Bool {
+    return searchController.isActive && !isSearchBarEmpty()
+  }
+  
+  func filterChatListForSearch(searchText: String) {
+    let chatList =  modelController?.chatList ?? []
+    filteredChatList = chatList.filter{
+      (chat: ChatProtocol) -> Bool in
+      return chat.title.lowercased().contains(searchText.lowercased())
+    }
+    chatListTable.reloadData()
+  }
+  
+  func getChat(indexPath: IndexPath) -> ChatProtocol? {
+    if isFiltered() {
+      return filteredChatList[indexPath.row]
+    } else {
+      return modelController?.chatList?[indexPath.row]
+    }
+  }
 }
 
 extension RootChatListViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return modelController?.chatList?.count ?? 0
+    if isFiltered() {
+      return filteredChatList.count
+    } else {
+      return modelController?.chatList?.count ?? 0
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let chatCell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! RootChatListTableViewCell
     
-    if let chat = modelController?.chatList?[indexPath.row] {
+    if let chat = getChat(indexPath: indexPath) {
        chatCell.setCellValue(chat: chat)
     }
     
@@ -89,13 +119,15 @@ extension RootChatListViewController: UITableViewDataSource, UITableViewDelegate
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     performSegue(withIdentifier: "RootChatListToChatSegue", sender: indexPath)
+    searchController.isActive = false
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let destination = segue.destination as? ChatViewController,
-      let indexPath = sender as? IndexPath {
+      let indexPath = sender as? IndexPath,
+      let chat = getChat(indexPath: indexPath) {
      destination.modelController = modelController
-     destination.chatId = modelController?.chatList?[indexPath.row].id ?? ""
+     destination.chatId = chat.id
     }
   }
   
@@ -108,6 +140,7 @@ extension RootChatListViewController: UITableViewDataSource, UITableViewDelegate
 extension RootChatListViewController: UISearchResultsUpdating {
   // MARK: - UISearchResultsUpdating Delegate
   func updateSearchResults(for searchController: UISearchController) {
-    // TODO
+    guard let searchText = searchController.searchBar.text else { return }
+    filterChatListForSearch(searchText: searchText)
   }
 }

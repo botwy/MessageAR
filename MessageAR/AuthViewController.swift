@@ -38,12 +38,15 @@ class AuthViewController: UIViewController {
   }
   
   @IBAction func loginButtonHandler(_ sender: UIButton) {
-    guard let userName = self.userName.text else {
+    guard let userName = userName.text, let password = password.text else {
       return
     }
     let http = HttpFetch()
     http.setAuthService()
-    http.createPostRequest(requestPayload: AuthRequestPayload(userName: userName)) {
+    guard let loginData = String(format: "%@:%@", userName, password).data(using: String.Encoding.utf8) else { return }
+    let base64LoginData = loginData.base64EncodedString()
+    let headers: [(field: String, value: String)] = [(field: "Authorization", value: "Basic \(base64LoginData)")]
+    http.createGetRequest(headers: headers) {
       [unowned self](data, response, error) in
       guard let data = data, error == nil else { return }
       do {
