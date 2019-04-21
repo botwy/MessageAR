@@ -16,7 +16,7 @@ class RootChatListViewController: UIViewController {
   var modelController: ChatModelController?
   var filteredChatList = [ChatProtocol]()
   let searchController = UISearchController(searchResultsController: nil)
-  
+  let segmentControl = UISegmentedControl(items: ["all", "today"])
   let cellIdentifier = String(describing: RootChatListTableViewCell.self)
   
   override func viewDidLoad() {
@@ -37,6 +37,7 @@ class RootChatListViewController: UIViewController {
     chatListTable.dataSource = self
     chatListTable.tableFooterView = UIView.init()
     chatListTable.backgroundView = spinner
+    chatListTable.tableHeaderView = segmentControl
     fetchChatList()
   }
   

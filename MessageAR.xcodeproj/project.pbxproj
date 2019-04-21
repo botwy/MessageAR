@@ -21,6 +21,7 @@
 		847A190122591EF50015C4B7 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */; };
 		847A1903225943CD0015C4B7 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A1902225943CD0015C4B7 /* UILabelExtension.swift */; };
 		84BE3A2F225D2F2400D1C941 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BE3A2E225D2F2400D1C941 /* default.png */; };
+		84DD0831226C673000ACD28E /* AuthPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD0830226C673000ACD28E /* AuthPanelView.swift */; };
 		84F2EA9022611FD7008FAE7C /* ChatModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2EA8F22611FD7008FAE7C /* ChatModelController.swift */; };
 		84F3D6B42259D7E4006B847D /* RootChatListViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3D6B32259D7E4006B847D /* RootChatListViewContoller.swift */; };
 		84F3D6B72259D90D006B847D /* RootChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3D6B52259D90D006B847D /* RootChatListTableViewCell.swift */; };
@@ -46,6 +47,7 @@
 		847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		847A1902225943CD0015C4B7 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		84BE3A2E225D2F2400D1C941 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		84DD0830226C673000ACD28E /* AuthPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPanelView.swift; sourceTree = "<group>"; };
 		84F2EA8F22611FD7008FAE7C /* ChatModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModelController.swift; sourceTree = "<group>"; };
 		84F3D6B32259D7E4006B847D /* RootChatListViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootChatListViewContoller.swift; sourceTree = "<group>"; };
 		84F3D6B52259D90D006B847D /* RootChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootChatListTableViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		840C42F02258DAB6003C334C /* MessageAR */ = {
 			isa = PBXGroup;
 			children = (
+				84DD082F226C670700ACD28E /* Auth */,
 				84BE3A2E225D2F2400D1C941 /* default.png */,
 				840C42F12258DAB6003C334C /* AppDelegate.swift */,
 				840C42F32258DAB6003C334C /* ChatViewController.swift */,
@@ -104,9 +107,17 @@
 				84F3D6B92259D9FE006B847D /* Chat.swift */,
 				D7B315C22260A616007E9DF0 /* HttpFetch.swift */,
 				84F2EA8F22611FD7008FAE7C /* ChatModelController.swift */,
-				844DD794226376C300F4E896 /* AuthViewController.swift */,
 			);
 			path = MessageAR;
+			sourceTree = "<group>";
+		};
+		84DD082F226C670700ACD28E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				844DD794226376C300F4E896 /* AuthViewController.swift */,
+				84DD0830226C673000ACD28E /* AuthPanelView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 				84F3D6B42259D7E4006B847D /* RootChatListViewContoller.swift in Sources */,
 				84F3D6BA2259D9FE006B847D /* Chat.swift in Sources */,
 				847A1903225943CD0015C4B7 /* UILabelExtension.swift in Sources */,
+				84DD0831226C673000ACD28E /* AuthPanelView.swift in Sources */,
 				844DD795226376C300F4E896 /* AuthViewController.swift in Sources */,
 				840C43082258E08E003C334C /* mock.swift in Sources */,
 				840C43062258DE90003C334C /* Person.swift in Sources */,

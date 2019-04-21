@@ -17,28 +17,31 @@ struct AuthServerResponse: Decodable {
   let success: Bool
 }
 
-class AuthViewController: UIViewController {
-  @IBOutlet weak var authView: UIView!
-  @IBOutlet weak var userName: UITextField!
-  @IBOutlet weak var password: UITextField!
-  @IBOutlet weak var errorLabel: UILabel!
-  @IBOutlet weak var loginButton: UIButton!
+class AuthViewController: UIViewController, AuthPanelDelegate {
+  private lazy var authPanel: AuthPanelView = {
+    let view = AuthPanelView(frame: CGRect(x: 50, y: 500, width: 350, height: 250))
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.layer.cornerRadius = 10
+    view.backgroundColor = UIColor.white
+    
+    return view
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-      errorLabel.isHidden = true
-      authView.layer.cornerRadius = 20
-      loginButton.layer.borderWidth = 1
-      loginButton.layer.borderColor = UIColor.blue.cgColor
-      loginButton.layer.cornerRadius = 10
+    authPanel.delegate = self
+    view.addSubview(authPanel)
   }
   
-  @IBAction func changeUserName(_ sender: UITextField) {
-    self.errorLabel.isHidden = true
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    authPanel.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY*0.8)
+    authPanel.transform = CGAffineTransform(rotationAngle: 0.5).concatenating(CGAffineTransform(scaleX: 0.1, y: 0.5))
+    authPanel.transform = CGAffineTransform.identity
   }
   
-  @IBAction func loginButtonHandler(_ sender: UIButton) {
-    guard let userName = userName.text, let password = password.text else {
+  func loginButtonHandler(sender: UIButton) {
+    guard let userName = authPanel.userNameField.text, let password = authPanel.passwordField.text else {
       return
     }
     let http = HttpFetch()
@@ -57,7 +60,7 @@ class AuthViewController: UIViewController {
           }
         } else {
           DispatchQueue.main.async {
-            self.errorLabel.isHidden = false
+            self.authPanel.errorLabel.isHidden = false
           }
         }
       } catch let error {
