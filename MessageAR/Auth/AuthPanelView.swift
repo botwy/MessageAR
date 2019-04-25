@@ -112,10 +112,7 @@ class AuthPanelView: UIView {
   func configureConstraints() {
     container.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20).isActive = true
     container.heightAnchor.constraint(equalTo: self.heightAnchor, constant: 0).isActive = true
-    container.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-    container.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-    container.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 10).isActive = true
-    container.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+    container.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
     
     userNameLabel.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.3).isActive = true
     userNameLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
