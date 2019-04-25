@@ -18,6 +18,11 @@ struct AuthServerResponse: Decodable {
 }
 
 class AuthViewController: UIViewController, AuthPanelDelegate {
+  struct Constants {
+    static let AuthViewHeight: CGFloat = 250
+    static let AuthViewWidth: CGFloat = 300
+  }
+  
   private lazy var authPanel: AuthPanelView = {
     let view = AuthPanelView(frame: CGRect(x: 50, y: 500, width: 350, height: 250))
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -27,17 +32,19 @@ class AuthViewController: UIViewController, AuthPanelDelegate {
     return view
   }()
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     authPanel.delegate = self
     view.addSubview(authPanel)
+    configureConstraints()
   }
   
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    authPanel.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY*0.8)
-    authPanel.transform = CGAffineTransform(rotationAngle: 0.5).concatenating(CGAffineTransform(scaleX: 0.1, y: 0.5))
-    authPanel.transform = CGAffineTransform.identity
+  func configureConstraints() {
+    authPanel.widthAnchor.constraint(equalToConstant: Constants.AuthViewWidth).isActive = true
+    authPanel.heightAnchor.constraint(equalToConstant: Constants.AuthViewHeight).isActive = true
+    authPanel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+    authPanel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
   }
   
   func loginButtonHandler(sender: UIButton) {

@@ -16,6 +16,13 @@ protocol AuthPanelDelegate {
 class AuthPanelView: UIView {
   var delegate: AuthPanelDelegate?
   
+  private lazy var container: UIView = {
+  let view = UIView()
+  view.translatesAutoresizingMaskIntoConstraints = false
+  
+  return view
+  }()
+  
   private lazy var userNameLabel: UILabel = {
     let label = UILabel(frame: CGRect(x: 10, y: 40, width: 80, height: 20))
     label.text = "имя"
@@ -88,17 +95,55 @@ class AuthPanelView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
-    self.addSubview(userNameLabel)
-    self.addSubview(userNameField)
-    self.addSubview(passwordLabel)
-    self.addSubview(passwordField)
-    self.addSubview(loginButton)
-    self.addSubview(errorLabel)
+    self.addSubview(container)
+    container.addSubview(userNameLabel)
+    container.addSubview(userNameField)
+    container.addSubview(passwordLabel)
+    container.addSubview(passwordField)
+    container.addSubview(loginButton)
+    container.addSubview(errorLabel)
+    configureConstraints()
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func configureConstraints() {
+    container.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20).isActive = true
+    container.heightAnchor.constraint(equalTo: self.heightAnchor, constant: 0).isActive = true
+    container.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+    container.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
+    container.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 10).isActive = true
+    container.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+    
+    userNameLabel.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.3).isActive = true
+    userNameLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+    userNameLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 50).isActive = true
+    userNameLabel.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 0).isActive = true
+    
+    userNameField.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.7).isActive = true
+    userNameField.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+    userNameField.topAnchor.constraint(equalTo: container.topAnchor, constant: 50).isActive = true
+    userNameField.rightAnchor.constraint(equalTo: container.rightAnchor, constant: 0).isActive = true
+    
+    passwordLabel.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.3).isActive = true
+    passwordLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+    passwordLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 20).isActive = true
+    passwordLabel.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 0).isActive = true
+    
+    passwordField.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.7).isActive = true
+    passwordField.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+    passwordField.topAnchor.constraint(equalTo: userNameField.bottomAnchor, constant: 20).isActive = true
+    passwordField.rightAnchor.constraint(equalTo: container.rightAnchor, constant: 0).isActive = true
+    
+    loginButton.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 1).isActive = true
+    loginButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+    loginButton.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 30).isActive = true
+    
+    errorLabel.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 1).isActive = true
+    errorLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+    errorLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10).isActive = true
   }
   
   @objc
