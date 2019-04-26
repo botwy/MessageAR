@@ -41,7 +41,13 @@ class ChatViewController: UIViewController {
     if (messageText.count == 0) {
       return
     }
-    let message = Message(id: "", text: messageText, author: author, createDate: Message.getServerCurrentDate())
+    let message = MessageDTO(id: "", text: messageText, author: author, createDate: MessageDTO.getServerCurrentDate())
+    
+    let messagePersistent = Message(context: PersistentService.context)
+    messagePersistent.id = message.id
+    messagePersistent.text = message.text
+    PersistentService.saveContext()
+    
     let requestPayload = ChatMessageRequestJson(chatId: chatId, message: message)
     let http = HttpFetch()
     http.setMessageService()

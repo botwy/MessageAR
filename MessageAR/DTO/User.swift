@@ -2,20 +2,20 @@
 //  User.swift
 //  MessageAR
 //
-//  Created by Admin on 06.04.2019.
+//  Created by Dev on 26/04/2019.
 //  Copyright © 2019 goncharov denis. All rights reserved.
 //
 
 import Foundation
 
-protocol UserProtocol: PersonDTOProtocol {
+protocol UserDTOProtocol: PersonDTOProtocol {
   var profileIconPath: String? { get set }
 }
 
-struct User: UserProtocol, Codable {
+struct UserDTO: UserDTOProtocol, Codable {
   var id: String
   var name: String
-  var profileIconPath: String? = nil
+  var profileIconPath: String?
   
   init (id: String, name: String) {
     self.id = id

@@ -14,7 +14,7 @@ class RootChatListViewController: UIViewController {
   let spinner = UIActivityIndicatorView(style: .gray)
   
   var modelController: ChatModelController?
-  var filteredChatList = [ChatProtocol]()
+  var filteredChatList = [ChatDTOProtocol]()
   let searchController = UISearchController(searchResultsController: nil)
   let segmentControl = UISegmentedControl(items: ["all", "today"])
   let cellIdentifier = String(describing: RootChatListTableViewCell.self)
@@ -79,13 +79,13 @@ class RootChatListViewController: UIViewController {
   func filterChatListForSearch(searchText: String) {
     let chatList =  modelController?.chatList ?? []
     filteredChatList = chatList.filter{
-      (chat: ChatProtocol) -> Bool in
+      (chat: ChatDTOProtocol) -> Bool in
       return chat.title.lowercased().contains(searchText.lowercased())
     }
     chatListTable.reloadData()
   }
   
-  func getChat(indexPath: IndexPath) -> ChatProtocol? {
+  func getChat(indexPath: IndexPath) -> ChatDTOProtocol? {
     if isFiltered() {
       return filteredChatList[indexPath.row]
     } else {

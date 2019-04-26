@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PersonProtocol {
+protocol PersonDTOProtocol {
   var id: String { get }
   var name: String { get set }
 }
