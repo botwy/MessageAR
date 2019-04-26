@@ -20,7 +20,7 @@ struct AuthServerResponse: Decodable {
 class AuthViewController: UIViewController, AuthPanelDelegate {
   struct Constants {
     static let AuthViewHeight: CGFloat = 250
-    static let AuthViewWidth: CGFloat = 500
+    static let AuthViewWidth: CGFloat = 350
   }
   
   private lazy var authPanel: AuthPanelView = {
@@ -41,7 +41,8 @@ class AuthViewController: UIViewController, AuthPanelDelegate {
   }
   
   func configureConstraints() {
-    authPanel.widthAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.widthAnchor, constant: 0).isActive = true
+    authPanel.widthAnchor.constraint(equalToConstant: Constants.AuthViewWidth).isActive = true
+    authPanel.widthAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.widthAnchor, constant: -20).isActive = true
     authPanel.heightAnchor.constraint(equalToConstant: Constants.AuthViewHeight).isActive = true
     authPanel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
     authPanel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
