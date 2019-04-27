@@ -46,6 +46,7 @@ class RootChatListViewController: UIViewController {
   }
   
   func fetchChatList() {
+    let store = UserDefaults.standard
     let http = HttpFetch()
     spinner.startAnimating()
     http.createGetRequest(headers: nil){
