@@ -19,7 +19,6 @@ protocol ChatPresentationProtocol {
 }
 
 class ChatViewController: UIViewController, ChatPresentorDelegate {
-  
   @IBOutlet weak var messageTextField: UITextField!
   @IBOutlet weak var messagesTable: UITableView!
   @IBOutlet weak var navigationBar: UINavigationItem!
@@ -46,6 +45,9 @@ class ChatViewController: UIViewController, ChatPresentorDelegate {
   
   func fetchingEnd() {
     messageTextField.text = ""
+  }
+  
+  func dataUpdateHandler() {
     messagesTable.reloadData()
   }
   

@@ -11,6 +11,7 @@ import Foundation
 protocol RootChatListPresentorDelegate {
   func fetchingStart()
   func fetchingEnd()
+  func dataUpdateHandler()
 }
 
 class RootChatListPresentor: RootChatListPresentationProtocol {
@@ -39,8 +40,8 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
   private func fetchChatList() {
     let http = HttpFetch()
     http.createGetRequest(headers: nil){
-      [unowned self](data, response, error) in
-      guard let data = data, error == nil else { return }
+      [weak self](data, response, error) in
+      guard let self = self, let data = data, error == nil else { return }
       do {
         let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
         guard let chatList = chatResponseJson.body else {
@@ -48,8 +49,10 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
         }
         self.store.set(data, forKey: self.storeKey)
         DispatchQueue.main.async {
-          self.modelController.update(chatList: chatList)
-          self.delegate?.fetchingEnd()
+          [weak self] in
+          self?.modelController.update(chatList: chatList)
+          self?.delegate?.fetchingEnd()
+          self?.delegate?.dataUpdateHandler()
         }
       } catch let error {
         print(error)
@@ -62,10 +65,20 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
   }
   
   func viewDidLoadHandler() {
-    if let data = store.data(forKey: storeKey),
-    let chatResponseJson = try? JSONDecoder().decode(ChatListResponseJson.self, from: data),
-    let chatList = chatResponseJson.body {
-      self.modelController.update(chatList: chatList)
+    DispatchQueue.global(qos: .background).async {
+      [weak self] in
+      if let self = self,
+        let data = self.store.data(forKey: self.storeKey),
+        let chatResponseJson = try? JSONDecoder().decode(ChatListResponseJson.self, from: data),
+        let chatList = chatResponseJson.body {
+        
+        DispatchQueue.main.async {
+          [weak self] in
+          self?.modelController.update(chatList: chatList)
+          self?.delegate?.dataUpdateHandler()
+        }
+        
+      }
     }
     delegate?.fetchingStart()
     fetchChatList()

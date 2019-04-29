@@ -19,7 +19,7 @@ protocol RootChatListPresentationProtocol {
 }
 
 class RootChatListViewController: UIViewController, RootChatListPresentorDelegate {
-  
+ 
   @IBOutlet weak var chatListTable: UITableView!
   let spinner = UIActivityIndicatorView(style: .gray)
   
@@ -66,6 +66,9 @@ class RootChatListViewController: UIViewController, RootChatListPresentorDelegat
   func fetchingEnd() {
     self.spinner.stopAnimating()
     self.spinner.isHidden = true
+  }
+  
+  func dataUpdateHandler() {
     self.chatListTable.reloadData()
   }
   

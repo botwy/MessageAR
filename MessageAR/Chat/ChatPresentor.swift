@@ -9,6 +9,7 @@
 import Foundation
 
 protocol ChatPresentorDelegate {
+  func dataUpdateHandler()
   func fetchingEnd()
 }
 
@@ -57,16 +58,18 @@ class ChatPresentor: ChatPresentationProtocol {
     let requestPayload = ChatMessageRequestJson(chatId: chatId, message: message)
     let http = HttpFetch()
     http.setMessageService()
-    http.createPostRequest(requestPayload: requestPayload) { [unowned self](data, url, error) in
-      guard let data = data, error == nil else { return }
+    http.createPostRequest(requestPayload: requestPayload) { [weak self](data, url, error) in
+      guard let self = self, let data = data, error == nil else { return }
       do {
         let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
         guard let chatList = chatResponseJson.body else {
           return
         }
         DispatchQueue.main.async {
-          self.modelController.update(chatList: chatList)
-          self.delegate?.fetchingEnd()
+          [weak self] in
+          self?.modelController.update(chatList: chatList)
+          self?.delegate?.fetchingEnd()
+          self?.delegate?.dataUpdateHandler()
         }
       } catch let error {
         print(error)
