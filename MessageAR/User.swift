@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UserProtocol: PersonDTOProtocol {
+protocol UserProtocol: PersonProtocol {
   var profileIconPath: String? { get set }
 }
 

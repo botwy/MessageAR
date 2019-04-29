@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol UserDTOProtocol: PersonDTOProtocol {
+protocol UserProtocol: PersonProtocol {
   var profileIconPath: String? { get set }
 }
 
-struct UserDTO: UserDTOProtocol, Codable {
+struct User: UserProtocol, Codable {
   var id: String
   var name: String
   var profileIconPath: String?

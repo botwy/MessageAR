@@ -9,9 +9,9 @@
 import Foundation
 
 class ChatModelController {
-  private var _chatList: [ChatDTOProtocol]?
+  private var _chatList: [ChatProtocol]?
   
-  var chatList: [ChatDTOProtocol]? {
+  var chatList: [ChatProtocol]? {
     set {
       _chatList = newValue
     }
@@ -22,36 +22,36 @@ class ChatModelController {
   
   init() { }
   
-  init(chatList: [ChatDTOProtocol]) {
+  init(chatList: [ChatProtocol]) {
     self.chatList = chatList
   }
   
-  func getChatBy(id: String) -> ChatDTOProtocol? {
+  func getChatBy(id: String) -> ChatProtocol? {
     return chatList?.first{ $0.id == id }
   }
   
-  func getAuthorBy(chatId: String) -> UserDTO? {
+  func getAuthorBy(chatId: String) -> User? {
     return getChatBy(id: chatId)?.author
   }
   
-  func getMessagesBy(chatId: String) -> [MessageDTO] {
+  func getMessagesBy(chatId: String) -> [Message] {
     return getChatBy(id: chatId)?.messages ?? []
   }
   
-  func getLastMessage(inChatWithId chatId: String) -> MessageDTO? {
+  func getLastMessage(inChatWithId chatId: String) -> Message? {
     return getMessagesBy(chatId: chatId).last
   }
   
-  func getMessage(byId messageId: String, inChatWithId chatId: String) -> MessageDTO? {
+  func getMessage(byId messageId: String, inChatWithId chatId: String) -> Message? {
     return getMessagesBy(chatId: chatId).first{ $0.id == messageId }
   }
   
-  func add(message: MessageDTO, toChatWithId id: String) {
+  func add(message: Message, toChatWithId id: String) {
      var chat = chatList?.first{ $0.id == id }
      chat?.messages.append(message)
   }
   
-  func update(chatList: [ChatDTOProtocol]) {
+  func update(chatList: [ChatProtocol]) {
     self.chatList = chatList
   }
 }

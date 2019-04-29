@@ -15,8 +15,8 @@ class ChatTableViewCell: UITableViewCell {
   @IBOutlet weak var ownAddInfo: UILabel!
 
   
-  func setChatRowValue(message: MessageDTOProtocol, isOwn: Bool) {
-    let createDate = MessageDTO.getUiCreateDate(inMessage: message)
+  func setChatRowValue(message: MessageProtocol, isOwn: Bool) {
+    let createDate = Message.getUiCreateDate(inMessage: message)
     if (isOwn) {
       ownMessageLabel.text = message.text
       ownAddInfo.text = createDate

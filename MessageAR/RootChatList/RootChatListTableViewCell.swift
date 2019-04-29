@@ -38,7 +38,7 @@ class RootChatListTableViewCell: UITableViewCell {
     }
   }
   
-  func setCellValue(chat: ChatDTOProtocol) {
+  func setCellValue(chat: ChatProtocol) {
     chatTitle.text = chat.title
     self.setProfileIcon(profileIconPath: chat.author.profileIconPath)
     
@@ -46,6 +46,6 @@ class RootChatListTableViewCell: UITableViewCell {
       return
     }
     message.text = lastMessage.text
-    lastUpdate.text = MessageDTO.getUiCreateDate(inMessage: lastMessage)
+    lastUpdate.text = Message.getUiCreateDate(inMessage: lastMessage)
   }
 }

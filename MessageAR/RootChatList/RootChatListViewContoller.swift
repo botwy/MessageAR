@@ -9,12 +9,23 @@
 import Foundation
 import UIKit
 
-class RootChatListViewController: UIViewController {
+protocol RootChatListPresentationProtocol {
+  var modelController: ChatModelController { get set }
+  var chatList: [ChatProtocol] {get}
+  var chatCount: Int { get }
+  var delegate: RootChatListPresentorDelegate? { get set }
+  func viewDidLoadHandler()
+  func getChat(by indexPath: IndexPath) -> ChatProtocol
+}
+
+class RootChatListViewController: UIViewController, RootChatListPresentorDelegate {
+  
   @IBOutlet weak var chatListTable: UITableView!
   let spinner = UIActivityIndicatorView(style: .gray)
   
-  var modelController: ChatModelController?
-  var filteredChatList = [ChatDTOProtocol]()
+  var presentor: RootChatListPresentationProtocol?
+  
+  var filteredChatList = [ChatProtocol]()
   let searchController = UISearchController(searchResultsController: nil)
   let segmentControl = UISegmentedControl(items: ["all", "today"])
   let cellIdentifier = String(describing: RootChatListTableViewCell.self)
@@ -38,35 +49,24 @@ class RootChatListViewController: UIViewController {
     chatListTable.tableFooterView = UIView.init()
     chatListTable.backgroundView = spinner
     chatListTable.tableHeaderView = segmentControl
-    fetchChatList()
+    
+    presentor = RootChatListPresentor()
+    presentor?.delegate = self
+    presentor?.viewDidLoadHandler()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     chatListTable.reloadData()
   }
   
-  func fetchChatList() {
-    let store = UserDefaults.standard
-    let http = HttpFetch()
+  func fetchingStart() {
     spinner.startAnimating()
-    http.createGetRequest(headers: nil){
-      [unowned self](data, response, error) in
-      guard let data = data, error == nil else { return }
-      do {
-        let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
-        guard let chatList = chatResponseJson.body else {
-          return
-        }
-        DispatchQueue.main.async {
-          self.modelController = ChatModelController(chatList: chatList)
-          self.chatListTable.reloadData()
-          self.spinner.stopAnimating()
-          self.spinner.isHidden = true
-        }
-      } catch let error {
-        print(error)
-      }
-    }
+  }
+  
+  func fetchingEnd() {
+    self.spinner.stopAnimating()
+    self.spinner.isHidden = true
+    self.chatListTable.reloadData()
   }
   
   func isSearchBarEmpty() -> Bool {
@@ -78,19 +78,19 @@ class RootChatListViewController: UIViewController {
   }
   
   func filterChatListForSearch(searchText: String) {
-    let chatList =  modelController?.chatList ?? []
+    let chatList =  presentor?.chatList ?? []
     filteredChatList = chatList.filter{
-      (chat: ChatDTOProtocol) -> Bool in
+      (chat: ChatProtocol) -> Bool in
       return chat.title.lowercased().contains(searchText.lowercased())
     }
     chatListTable.reloadData()
   }
   
-  func getChat(indexPath: IndexPath) -> ChatDTOProtocol? {
+  func getChat(indexPath: IndexPath) -> ChatProtocol? {
     if isFiltered() {
       return filteredChatList[indexPath.row]
     } else {
-      return modelController?.chatList?[indexPath.row]
+      return presentor?.getChat(by: indexPath)
     }
   }
 }
@@ -100,7 +100,7 @@ extension RootChatListViewController: UITableViewDataSource, UITableViewDelegate
     if isFiltered() {
       return filteredChatList.count
     } else {
-      return modelController?.chatList?.count ?? 0
+      return presentor?.chatCount ?? 0
     }
   }
   
@@ -125,12 +125,13 @@ extension RootChatListViewController: UITableViewDataSource, UITableViewDelegate
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let destination = segue.destination as? ChatViewController,
+    guard let destination = segue.destination as? ChatViewController,
       let indexPath = sender as? IndexPath,
-      let chat = getChat(indexPath: indexPath) {
-     destination.modelController = modelController
-     destination.chatId = chat.id
+      let chat = getChat(indexPath: indexPath),
+      let presentor = presentor else {
+        return
     }
+    destination.presentor = ChatPresentor(chatId: chat.id, modelController: presentor.modelController)
   }
   
   //MARK: - UITableViewDelegate

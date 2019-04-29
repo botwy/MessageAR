@@ -13,7 +13,7 @@
 		840C42F92258DABB003C334C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840C42F82258DABB003C334C /* Assets.xcassets */; };
 		840C42FC2258DABB003C334C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840C42FA2258DABB003C334C /* LaunchScreen.storyboard */; };
 		840C43042258DD9C003C334C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C43032258DD9C003C334C /* Message.swift */; };
-		840C43062258DE90003C334C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C43052258DE90003C334C /* Person.swift */; };
+		840C43062258DE90003C334C /* PersonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C43052258DE90003C334C /* PersonProtocol.swift */; };
 		844DD795226376C300F4E896 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DD794226376C300F4E896 /* AuthViewController.swift */; };
 		847A190022591EF50015C4B7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A18FE22591EF50015C4B7 /* ChatTableViewCell.swift */; };
 		847A190122591EF50015C4B7 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */; };
@@ -27,13 +27,10 @@
 		84F3D6BA2259D9FE006B847D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3D6B92259D9FE006B847D /* Chat.swift */; };
 		D70902C222732C5700DCD400 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D70902C022732C5700DCD400 /* Model.xcdatamodeld */; };
 		D70902C422732D2500DCD400 /* PersistentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902C322732D2500DCD400 /* PersistentService.swift */; };
-		D70902CB2273392300DCD400 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902C52273392300DCD400 /* User+CoreDataClass.swift */; };
-		D70902CC2273392300DCD400 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902C62273392300DCD400 /* User+CoreDataProperties.swift */; };
-		D70902CD2273392300DCD400 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902C72273392300DCD400 /* Chat+CoreDataClass.swift */; };
-		D70902CE2273392300DCD400 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902C82273392300DCD400 /* Chat+CoreDataProperties.swift */; };
-		D70902CF2273392300DCD400 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902C92273392300DCD400 /* Message+CoreDataClass.swift */; };
-		D70902D02273392300DCD400 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902CA2273392300DCD400 /* Message+CoreDataProperties.swift */; };
 		D70902D222733F1900DCD400 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902D122733F1900DCD400 /* User.swift */; };
+		D70902D42276E2E500DCD400 /* ServerResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902D32276E2E500DCD400 /* ServerResponseModels.swift */; };
+		D70902D72276EB2500DCD400 /* RootChatListPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902D62276EB2500DCD400 /* RootChatListPresentor.swift */; };
+		D70902D92277035100DCD400 /* ChatPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70902D82277035100DCD400 /* ChatPresentor.swift */; };
 		D7B315C32260A616007E9DF0 /* HttpFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B315C22260A616007E9DF0 /* HttpFetch.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +43,7 @@
 		840C42FB2258DABB003C334C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		840C42FD2258DABB003C334C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840C43032258DD9C003C334C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		840C43052258DE90003C334C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		840C43052258DE90003C334C /* PersonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonProtocol.swift; sourceTree = "<group>"; };
 		844DD794226376C300F4E896 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		847A18FE22591EF50015C4B7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
@@ -60,13 +57,10 @@
 		84F3D6B92259D9FE006B847D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		D70902C122732C5700DCD400 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D70902C322732D2500DCD400 /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
-		D70902C52273392300DCD400 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D70902C62273392300DCD400 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D70902C72273392300DCD400 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D70902C82273392300DCD400 /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D70902C92273392300DCD400 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D70902CA2273392300DCD400 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D70902D122733F1900DCD400 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D70902D32276E2E500DCD400 /* ServerResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponseModels.swift; sourceTree = "<group>"; };
+		D70902D62276EB2500DCD400 /* RootChatListPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootChatListPresentor.swift; sourceTree = "<group>"; };
+		D70902D82277035100DCD400 /* ChatPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresentor.swift; sourceTree = "<group>"; };
 		D7B315C22260A616007E9DF0 /* HttpFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpFetch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,20 +95,20 @@
 		840C42F02258DAB6003C334C /* MessageAR */ = {
 			isa = PBXGroup;
 			children = (
-				D70902B42273233600DCD400 /* DTO */,
-				840C42F52258DAB7003C334C /* Main.storyboard */,
 				840C42F12258DAB6003C334C /* AppDelegate.swift */,
+				D70902B42273233600DCD400 /* Models */,
+				D70902D32276E2E500DCD400 /* ServerResponseModels.swift */,
+				84F2EA8F22611FD7008FAE7C /* ChatModelController.swift */,
+				840C42F52258DAB7003C334C /* Main.storyboard */,
+				84DD082F226C670700ACD28E /* Auth */,
+				D70902D52276E39700DCD400 /* RootChatList */,
 				D709028F22730A6F00DCD400 /* Chat */,
 				D709028E22730A4200DCD400 /* Entity */,
-				84DD082F226C670700ACD28E /* Auth */,
 				84BE3A2E225D2F2400D1C941 /* default.png */,
 				840C42F82258DABB003C334C /* Assets.xcassets */,
 				840C42FA2258DABB003C334C /* LaunchScreen.storyboard */,
 				840C42FD2258DABB003C334C /* Info.plist */,
 				847A1902225943CD0015C4B7 /* UILabelExtension.swift */,
-				84F3D6B32259D7E4006B847D /* RootChatListViewContoller.swift */,
-				84F3D6B52259D90D006B847D /* RootChatListTableViewCell.swift */,
-				84F3D6B62259D90D006B847D /* RootChatListTableViewCell.xib */,
 				D7B315C22260A616007E9DF0 /* HttpFetch.swift */,
 				D70902C322732D2500DCD400 /* PersistentService.swift */,
 			);
@@ -133,12 +127,6 @@
 		D709028E22730A4200DCD400 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				D70902C52273392300DCD400 /* User+CoreDataClass.swift */,
-				D70902C62273392300DCD400 /* User+CoreDataProperties.swift */,
-				D70902C72273392300DCD400 /* Chat+CoreDataClass.swift */,
-				D70902C82273392300DCD400 /* Chat+CoreDataProperties.swift */,
-				D70902C92273392300DCD400 /* Message+CoreDataClass.swift */,
-				D70902CA2273392300DCD400 /* Message+CoreDataProperties.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -146,7 +134,7 @@
 		D709028F22730A6F00DCD400 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				84F2EA8F22611FD7008FAE7C /* ChatModelController.swift */,
+				D70902D82277035100DCD400 /* ChatPresentor.swift */,
 				840C42F32258DAB6003C334C /* ChatViewController.swift */,
 				847A18FE22591EF50015C4B7 /* ChatTableViewCell.swift */,
 				847A18FF22591EF50015C4B7 /* ChatTableViewCell.xib */,
@@ -154,15 +142,26 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		D70902B42273233600DCD400 /* DTO */ = {
+		D70902B42273233600DCD400 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				840C43052258DE90003C334C /* Person.swift */,
+				840C43052258DE90003C334C /* PersonProtocol.swift */,
 				840C43032258DD9C003C334C /* Message.swift */,
 				84F3D6B92259D9FE006B847D /* Chat.swift */,
 				D70902D122733F1900DCD400 /* User.swift */,
 			);
-			path = DTO;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D70902D52276E39700DCD400 /* RootChatList */ = {
+			isa = PBXGroup;
+			children = (
+				D70902D62276EB2500DCD400 /* RootChatListPresentor.swift */,
+				84F3D6B32259D7E4006B847D /* RootChatListViewContoller.swift */,
+				84F3D6B52259D90D006B847D /* RootChatListTableViewCell.swift */,
+				84F3D6B62259D90D006B847D /* RootChatListTableViewCell.xib */,
+			);
+			path = RootChatList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,23 +241,20 @@
 				840C43042258DD9C003C334C /* Message.swift in Sources */,
 				84F3D6B72259D90D006B847D /* RootChatListTableViewCell.swift in Sources */,
 				847A190022591EF50015C4B7 /* ChatTableViewCell.swift in Sources */,
+				D70902D42276E2E500DCD400 /* ServerResponseModels.swift in Sources */,
 				840C42F42258DAB6003C334C /* ChatViewController.swift in Sources */,
 				D7B315C32260A616007E9DF0 /* HttpFetch.swift in Sources */,
 				84F2EA9022611FD7008FAE7C /* ChatModelController.swift in Sources */,
-				D70902CD2273392300DCD400 /* Chat+CoreDataClass.swift in Sources */,
 				84F3D6B42259D7E4006B847D /* RootChatListViewContoller.swift in Sources */,
-				D70902CF2273392300DCD400 /* Message+CoreDataClass.swift in Sources */,
 				84F3D6BA2259D9FE006B847D /* Chat.swift in Sources */,
 				847A1903225943CD0015C4B7 /* UILabelExtension.swift in Sources */,
-				D70902CC2273392300DCD400 /* User+CoreDataProperties.swift in Sources */,
-				D70902CE2273392300DCD400 /* Chat+CoreDataProperties.swift in Sources */,
+				D70902D92277035100DCD400 /* ChatPresentor.swift in Sources */,
+				D70902D72276EB2500DCD400 /* RootChatListPresentor.swift in Sources */,
 				84DD0831226C673000ACD28E /* AuthPanelView.swift in Sources */,
 				D70902C222732C5700DCD400 /* Model.xcdatamodeld in Sources */,
 				844DD795226376C300F4E896 /* AuthViewController.swift in Sources */,
-				D70902CB2273392300DCD400 /* User+CoreDataClass.swift in Sources */,
 				D70902C422732D2500DCD400 /* PersistentService.swift in Sources */,
-				840C43062258DE90003C334C /* Person.swift in Sources */,
-				D70902D02273392300DCD400 /* Message+CoreDataProperties.swift in Sources */,
+				840C43062258DE90003C334C /* PersonProtocol.swift in Sources */,
 				840C42F22258DAB6003C334C /* AppDelegate.swift in Sources */,
 				D70902D222733F1900DCD400 /* User.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  Person.swift
+//  PersonProtocol.swift
 //  MessageAR
 //
 //  Created by Admin on 06.04.2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PersonDTOProtocol {
+protocol PersonProtocol {
   var id: String { get }
   var name: String { get set }
 }
