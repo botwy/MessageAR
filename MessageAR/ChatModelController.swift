@@ -10,6 +10,8 @@ import Foundation
 
 class ChatModelController {
   private var _chatList: [ChatProtocol]?
+  private let store = UserDefaults.standard
+  private let storeKey = "chatList"
   
   var chatList: [ChatProtocol]? {
     set {
@@ -53,5 +55,64 @@ class ChatModelController {
   
   func update(chatList: [ChatProtocol]) {
     self.chatList = chatList
+  }
+  
+  func readFromStore(completionHandler: @escaping () -> Void) {
+    DispatchQueue.global(qos: .background).async {
+      [weak self] in
+      if let self = self,
+        let data = self.store.data(forKey: self.storeKey),
+        let chatResponseJson = try? JSONDecoder().decode(ChatListResponseJson.self, from: data),
+        let chatList = chatResponseJson.body {
+        self.update(chatList: chatList)
+        
+        DispatchQueue.main.async {
+          completionHandler()
+        }
+        
+      }
+    }
+  }
+  
+  private func requestSuccessHandler(data: Data, completionHandler: @escaping () -> Void) {
+    do {
+      let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
+      guard let chatList = chatResponseJson.body else {
+        return
+      }
+      self.store.set(data, forKey: self.storeKey)
+      self.update(chatList: chatList)
+      DispatchQueue.main.async {
+        completionHandler()
+      }
+    } catch let error {
+      print(error)
+    }
+  }
+  
+  func fetchChatList(completionHandler: @escaping () -> Void) {
+    let http = HttpFetch()
+    http.createGetRequest(headers: nil) {
+      [weak self](data, response, error) in
+      guard let self = self, let data = data, error == nil else { return }
+      self.requestSuccessHandler(data: data, completionHandler: completionHandler)
+    }
+  }
+  
+  func createMessage(chatId: String, messageText: String, completionHandler: @escaping () -> Void) {
+    guard let author = getAuthorBy(chatId: chatId) else {
+        return
+    }
+    
+    let message = Message(id: "", text: messageText, author: author, createDate: Message.getServerCurrentDate())
+    
+    let requestPayload = ChatMessageRequestJson(chatId: chatId, message: message)
+    let http = HttpFetch()
+    http.setMessageService()
+    http.createPostRequest(requestPayload: requestPayload) {
+      [weak self](data, url, error) in
+      guard let self = self, let data = data, error == nil else { return }
+      self.requestSuccessHandler(data: data, completionHandler: completionHandler)
+    }
   }
 }

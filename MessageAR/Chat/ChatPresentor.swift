@@ -45,35 +45,17 @@ class ChatPresentor: ChatPresentationProtocol {
   }
   
   func createMessage(messageText: String?) {
-    guard
-      let messageText = messageText,
-      let author = modelController.getAuthorBy(chatId: chatId) else {
+    guard let messageText = messageText else {
         return
     }
     if (messageText.count == 0) {
       return
     }
-    let message = Message(id: "", text: messageText, author: author, createDate: Message.getServerCurrentDate())
-    
-    let requestPayload = ChatMessageRequestJson(chatId: chatId, message: message)
-    let http = HttpFetch()
-    http.setMessageService()
-    http.createPostRequest(requestPayload: requestPayload) { [weak self](data, url, error) in
-      guard let self = self, let data = data, error == nil else { return }
-      do {
-        let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
-        guard let chatList = chatResponseJson.body else {
-          return
-        }
-        DispatchQueue.main.async {
-          [weak self] in
-          self?.modelController.update(chatList: chatList)
-          self?.delegate?.fetchingEnd()
-          self?.delegate?.dataUpdateHandler()
-        }
-      } catch let error {
-        print(error)
-      }
+    modelController.createMessage(chatId: chatId, messageText: messageText) {
+      [weak self] in
+      self?.delegate?.fetchingEnd()
+      self?.delegate?.dataUpdateHandler()
     }
   }
+  
 }

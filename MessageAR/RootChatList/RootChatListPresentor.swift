@@ -18,8 +18,6 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
   
   var modelController: ChatModelController
   var delegate: RootChatListPresentorDelegate?
-  let store = UserDefaults.standard
-  let storeKey = "chatList"
   
   init() {
     self.modelController = ChatModelController()
@@ -38,25 +36,10 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
   }
   
   private func fetchChatList() {
-    let http = HttpFetch()
-    http.createGetRequest(headers: nil){
-      [weak self](data, response, error) in
-      guard let self = self, let data = data, error == nil else { return }
-      do {
-        let chatResponseJson = try JSONDecoder().decode(ChatListResponseJson.self, from: data)
-        guard let chatList = chatResponseJson.body else {
-          return
-        }
-        self.store.set(data, forKey: self.storeKey)
-        DispatchQueue.main.async {
-          [weak self] in
-          self?.modelController.update(chatList: chatList)
-          self?.delegate?.fetchingEnd()
-          self?.delegate?.dataUpdateHandler()
-        }
-      } catch let error {
-        print(error)
-      }
+    modelController.fetchChatList{
+      [weak self] in
+      self?.delegate?.fetchingEnd()
+      self?.delegate?.dataUpdateHandler()
     }
   }
   
@@ -65,20 +48,9 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
   }
   
   func viewDidLoadHandler() {
-    DispatchQueue.global(qos: .background).async {
+    modelController.readFromStore {
       [weak self] in
-      if let self = self,
-        let data = self.store.data(forKey: self.storeKey),
-        let chatResponseJson = try? JSONDecoder().decode(ChatListResponseJson.self, from: data),
-        let chatList = chatResponseJson.body {
-        
-        DispatchQueue.main.async {
-          [weak self] in
-          self?.modelController.update(chatList: chatList)
-          self?.delegate?.dataUpdateHandler()
-        }
-        
-      }
+      self?.delegate?.dataUpdateHandler()
     }
     delegate?.fetchingStart()
     fetchChatList()
