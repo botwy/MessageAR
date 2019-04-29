@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4813ac50-e242-4d68-903d-1e2a4bf0f727" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MessageAR/ServerResponseModels.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Chat/ChatModelController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/ChatModelController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Chat/ChatTableViewCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Chat/ChatTableViewCell.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Chat/ChatViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Chat/ChatViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/DTO/Chat.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Models/Chat.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/DTO/Message.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Models/Message.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/DTO/Person.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Models/PersonProtocol.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/DTO/User.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Models/User.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/Chat+CoreDataClass.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/Chat+CoreDataProperties.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/Message+CoreDataClass.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/Message+CoreDataProperties.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/User+CoreDataClass.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/User+CoreDataProperties.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/Model.xcdatamodeld/Model.xcdatamodel/contents" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Model.xcdatamodeld/Model.xcdatamodel/contents" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/RootChatListTableViewCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/RootChatList/RootChatListTableViewCell.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/RootChatListTableViewCell.xib" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/RootChatList/RootChatListTableViewCell.xib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/RootChatListViewContoller.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/RootChatList/RootChatListViewContoller.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MessageAR/User.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/User.swift" afterDir="false" />
+    </list>
+    <ignored path="$USER_HOME$/Library/Caches/AppCode2019.1/DerivedData/MessageAR-ccfityzqzrlzcsafdaidugmvnlbo/Build/Intermediates.noindex/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_EB59D50E-E19A-42A9-B7A0-65DDED8D7824" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MessageAR/ChatModelController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/MessageAR/DTO/User.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/DTO/Person.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/DTO/Message.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/DTO/Chat.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/Model/Person.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/Model/PersonProtocol.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/Model/Message.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/Model/Chat.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/Model/User.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/Chat/ChatViewModelController.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/ChatViewModelController.swift" />
+        <option value="$PROJECT_DIR$/MessageAR/ChatModelController.swift" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/MessageAR.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/xcode.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="294" />
+    <option name="y" value="70" />
+    <option name="width" value="1400" />
+    <option name="height" value="942" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Cidr.FilesView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="MessageAR" type="1d218c8b:XcodeProjectNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="MessageAR" type="1d218c8b:XcodeProjectNode" />
+              <item name="MessageAR" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="MessageAR" type="1d218c8b:XcodeProjectNode" />
+              <item name="MessageAR" type="fcab9f18:XcodeViewNode" />
+              <item name="Models" type="fcab9f18:XcodeViewNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="MessageAR" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MessageAR" TARGET_NAME="MessageAR" CONFIG_NAME="Debug" SCHEME_NAME="MessageAR" IS_LOCATION_SIMULATION_ALLOWED="true" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" RUN_TARGET_PROJECT_NAME="MessageAR" RUN_TARGET_NAME="MessageAR" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <embedded_app_extension_list />
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4813ac50-e242-4d68-903d-1e2a4bf0f727" name="Default Changelist" comment="" />
+      <created>1556278288192</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556278288192</updated>
+      <workItem from="1556278289862" duration="4245000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4245000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="294" y="70" width="1400" height="942" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Messages" weight="0.32889965" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32889965" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2019.1/DerivedData/MessageAR-ccfityzqzrlzcsafdaidugmvnlbo/Build/Intermediates.noindex/MessageAR.build/Debug-iphonesimulator/MessageAR.build/DerivedSources/CoreDataGenerated/Model/Message+CoreDataProperties.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2019.1/DerivedData/MessageAR-ccfityzqzrlzcsafdaidugmvnlbo/Build/Intermediates.noindex/MessageAR.build/Debug-iphonesimulator/MessageAR.build/DerivedSources/CoreDataGenerated/Model/UserDAO+CoreDataProperties.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2019.1/DerivedData/MessageAR-ccfityzqzrlzcsafdaidugmvnlbo/Build/Intermediates.noindex/MessageAR.build/Debug-iphonesimulator/MessageAR.build/DerivedSources/CoreDataGenerated/Model/ChatDTO+CoreDataProperties.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MessageAR/Models/PersonProtocol.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MessageAR/Models/User.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MessageAR/Models/Message.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MessageAR/Models/Chat.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MessageAR/HttpFetch.swift">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MessageAR/Chat/ChatViewModelController.swift">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MessageAR/ServerResponseModels.swift">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MessageAR/ChatModelController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

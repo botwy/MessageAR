@@ -17,6 +17,8 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
   
   var modelController: ChatModelController
   var delegate: RootChatListPresentorDelegate?
+  let store = UserDefaults.standard
+  let storeKey = "chatList"
   
   init() {
     self.modelController = ChatModelController()
@@ -35,7 +37,6 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
   }
   
   private func fetchChatList() {
-    let store = UserDefaults.standard
     let http = HttpFetch()
     http.createGetRequest(headers: nil){
       [unowned self](data, response, error) in
@@ -45,6 +46,7 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
         guard let chatList = chatResponseJson.body else {
           return
         }
+        self.store.set(data, forKey: self.storeKey)
         DispatchQueue.main.async {
           self.modelController.update(chatList: chatList)
           self.delegate?.fetchingEnd()
@@ -60,6 +62,11 @@ class RootChatListPresentor: RootChatListPresentationProtocol {
   }
   
   func viewDidLoadHandler() {
+    if let data = store.data(forKey: storeKey),
+    let chatResponseJson = try? JSONDecoder().decode(ChatListResponseJson.self, from: data),
+    let chatList = chatResponseJson.body {
+      self.modelController.update(chatList: chatList)
+    }
     delegate?.fetchingStart()
     fetchChatList()
   }
