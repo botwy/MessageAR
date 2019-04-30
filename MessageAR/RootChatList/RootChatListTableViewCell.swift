@@ -25,7 +25,7 @@ class RootChatListTableViewCell: UITableViewCell {
       self.setDefaultIcon()
       return
     }
-    let profileIconUrl = HttpFetch().getHost() + "/" + profileIcon
+    let profileIconUrl = HttpFetch.shared.getHost() + "/" + profileIcon
     guard let url = URL(string: profileIconUrl) else { return }
     do {
       let data = try Data(contentsOf: url)

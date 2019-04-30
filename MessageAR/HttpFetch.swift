@@ -8,10 +8,25 @@
 
 import Foundation
 
-class HttpFetch {
-  private let host = "http://localhost:5656"
-  private var serviceUrl = "/chat"
-  var responseHandler: ((Data?, URLResponse?, Error?) -> Void)?
+final class HttpFetch {
+  static let shared = HttpFetch()
+  
+  private let host: String
+  private var serviceUrl: String
+  private let credential = URLCredential(user: "test", password: "test", persistence: .permanent)
+  private let session: URLSession
+
+  private init() {
+    host = "http://localhost:5656"
+    serviceUrl = "/chat"
+    session = URLSession(configuration: .default, delegate: nil, delegateQueue: nil)
+  }
+  
+  private init(configuration: URLSessionConfiguration) {
+    host = "http://localhost:5656"
+    serviceUrl = "/chat"
+    session = URLSession(configuration: configuration)
+  }
   
   func getHost() -> String {
     return host
@@ -19,6 +34,10 @@ class HttpFetch {
   
   func getUrl() -> String {
     return host + serviceUrl
+  }
+  
+  func setChatService() {
+    serviceUrl = "/chat"
   }
   
   func setMessageService() {
@@ -30,25 +49,23 @@ class HttpFetch {
   }
   
   func createGetRequest(headers: [(field: String, value: String)]?, responseHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
-    self.responseHandler = responseHandler
     guard let url = URL(string: getUrl()) else { return }
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
     request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+    
     if let headers = headers {
       headers.forEach {
         (header: (field: String, value: String)) in
         request.setValue(header.value, forHTTPHeaderField: header.field)
       }
     }
-    let session = URLSession(configuration: .default, delegate: nil, delegateQueue: nil)
     
     let sessionDataTask = session.dataTask(with: request, completionHandler: responseHandler)
     sessionDataTask.resume()
   }
   
   func createPostRequest<T:Encodable>(requestPayload: T, responseHandler: @escaping ((Data?, URLResponse?, Error?) -> Void)) {
-    self.responseHandler = responseHandler
     guard let url = URL(string: getUrl()) else { return }
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
@@ -57,7 +74,7 @@ class HttpFetch {
       return
     }
     request.httpBody = httpBody
-    let session = URLSession(configuration: .default, delegate: nil, delegateQueue: nil)
+  
     let sessionDataTask = session.dataTask(with: request, completionHandler: responseHandler)
     sessionDataTask.resume()
   }

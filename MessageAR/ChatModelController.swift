@@ -91,7 +91,8 @@ class ChatModelController {
   }
   
   func fetchChatList(completionHandler: @escaping () -> Void) {
-    let http = HttpFetch()
+    let http = HttpFetch.shared
+    http.setChatService()
     http.createGetRequest(headers: nil) {
       [weak self](data, response, error) in
       guard let self = self, let data = data, error == nil else { return }
@@ -107,7 +108,7 @@ class ChatModelController {
     let message = Message(id: "", text: messageText, author: author, createDate: Message.getServerCurrentDate())
     
     let requestPayload = ChatMessageRequestJson(chatId: chatId, message: message)
-    let http = HttpFetch()
+    let http = HttpFetch.shared
     http.setMessageService()
     http.createPostRequest(requestPayload: requestPayload) {
       [weak self](data, url, error) in

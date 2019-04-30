@@ -52,11 +52,17 @@ class AuthViewController: UIViewController, AuthPanelDelegate {
     guard let userName = authPanel.userNameField.text, let password = authPanel.passwordField.text else {
       return
     }
-    let http = HttpFetch()
+    
+    let credential = URLCredential(user: userName, password: password, persistence: .forSession)
+    let protectionSpace = URLProtectionSpace(host: "localhost", port: 5656, protocol: "http", realm: nil, authenticationMethod: NSURLAuthenticationMethodHTTPBasic)
+    URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
+    
+    let http = HttpFetch.shared
     http.setAuthService()
     guard let loginData = String(format: "%@:%@", userName, password).data(using: String.Encoding.utf8) else { return }
     let base64LoginData = loginData.base64EncodedString()
     let headers: [(field: String, value: String)] = [(field: "Authorization", value: "Basic \(base64LoginData)")]
+    
     http.createGetRequest(headers: headers) {
       [unowned self](data, response, error) in
       guard let data = data, error == nil else { return }
