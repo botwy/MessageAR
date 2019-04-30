@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RootChatListPresentorDelegate {
+protocol RootChatListPresentorDelegate: class {
   func fetchingStart()
   func fetchingEnd()
   func dataUpdateHandler()
@@ -17,7 +17,7 @@ protocol RootChatListPresentorDelegate {
 class RootChatListPresentor: RootChatListPresentationProtocol {
   
   var modelController: ChatModelController
-  var delegate: RootChatListPresentorDelegate?
+  weak var delegate: RootChatListPresentorDelegate?
   
   init() {
     self.modelController = ChatModelController()

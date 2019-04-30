@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4813ac50-e242-4d68-903d-1e2a4bf0f727" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MessageAR/ServerResponseModels.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Chat/ChatModelController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/ChatModelController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Chat/ChatTableViewCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Chat/ChatTableViewCell.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Chat/ChatViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Chat/ChatViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/DTO/Chat.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Models/Chat.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/DTO/Message.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Models/Message.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/DTO/Person.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Models/PersonProtocol.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/DTO/User.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Models/User.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/Chat+CoreDataClass.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/Chat+CoreDataProperties.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/Message+CoreDataClass.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/Message+CoreDataProperties.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/User+CoreDataClass.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Entity/User+CoreDataProperties.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/Model.xcdatamodeld/Model.xcdatamodel/contents" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/Model.xcdatamodeld/Model.xcdatamodel/contents" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/RootChatListTableViewCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/RootChatList/RootChatListTableViewCell.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/RootChatListTableViewCell.xib" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/RootChatList/RootChatListTableViewCell.xib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/RootChatListViewContoller.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/RootChatList/RootChatListViewContoller.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageAR/User.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MessageAR/User.swift" afterDir="false" />
-    </list>
+    <list default="true" id="4813ac50-e242-4d68-903d-1e2a4bf0f727" name="Default Changelist" comment="" />
     <ignored path="$USER_HOME$/Library/Caches/AppCode2019.1/DerivedData/MessageAR-ccfityzqzrlzcsafdaidugmvnlbo/Build/Intermediates.noindex/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,12 +79,6 @@
               <item name="MessageAR" type="1d218c8b:XcodeProjectNode" />
               <item name="MessageAR" type="fcab9f18:XcodeViewNode" />
             </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="MessageAR" type="1d218c8b:XcodeProjectNode" />
-              <item name="MessageAR" type="fcab9f18:XcodeViewNode" />
-              <item name="Models" type="fcab9f18:XcodeViewNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -114,6 +87,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -151,16 +125,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556278288192</updated>
-      <workItem from="1556278289862" duration="4245000" />
+      <workItem from="1556278289862" duration="4812000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4245000" />
+    <option name="totallyTimeSpent" value="4812000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="294" y="70" width="1400" height="942" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Favorites" side_tool="true" />

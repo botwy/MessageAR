@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HttpFetch:  NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
+class HttpFetch {
   private let host = "http://localhost:5656"
   private var serviceUrl = "/chat"
   var responseHandler: ((Data?, URLResponse?, Error?) -> Void)?
@@ -41,7 +41,7 @@ class HttpFetch:  NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
         request.setValue(header.value, forHTTPHeaderField: header.field)
       }
     }
-    let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+    let session = URLSession(configuration: .default, delegate: nil, delegateQueue: nil)
     
     let sessionDataTask = session.dataTask(with: request, completionHandler: responseHandler)
     sessionDataTask.resume()
@@ -57,22 +57,9 @@ class HttpFetch:  NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
       return
     }
     request.httpBody = httpBody
-    let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+    let session = URLSession(configuration: .default, delegate: nil, delegateQueue: nil)
     let sessionDataTask = session.dataTask(with: request, completionHandler: responseHandler)
     sessionDataTask.resume()
   }
   
-  public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-    do {
-      let data = try Data(contentsOf: location)
-      guard let responseHandler = responseHandler else { return }
-      
-      DispatchQueue.main.async {
-        responseHandler(data, nil, nil)
-      }
-    } catch let error {
-      print(error)
-    }
-    
-  }
 }

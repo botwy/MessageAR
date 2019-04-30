@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ChatPresentorDelegate {
+protocol ChatPresentorDelegate: class {
   func dataUpdateHandler()
   func fetchingEnd()
 }
@@ -16,7 +16,7 @@ protocol ChatPresentorDelegate {
 class ChatPresentor: ChatPresentationProtocol {
   var modelController: ChatModelController
   var chatId: String
-  var delegate: ChatPresentorDelegate?
+  weak var delegate: ChatPresentorDelegate?
   
   init (chatId: String) {
     self.chatId = chatId
@@ -56,6 +56,10 @@ class ChatPresentor: ChatPresentationProtocol {
       self?.delegate?.fetchingEnd()
       self?.delegate?.dataUpdateHandler()
     }
+  }
+  
+  deinit {
+    print("deinit ChatPresentor")
   }
   
 }

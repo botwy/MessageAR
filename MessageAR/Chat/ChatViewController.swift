@@ -55,6 +55,9 @@ class ChatViewController: UIViewController, ChatPresentorDelegate {
     presentor?.createMessage(messageText: messageTextField.text)
   }
 
+  deinit {
+    print("deinit ChatViewController")
+  }
 }
 
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
